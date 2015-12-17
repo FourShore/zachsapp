@@ -1103,6 +1103,11 @@
 			text-align: center;
 			background-image: url('images/overlay.png');
 		}
+
+		#main > section.fullscreen
+		{
+			min-height: 100vh;
+		}
 	
 		#main > section.one
 		{
