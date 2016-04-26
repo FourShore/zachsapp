@@ -20,7 +20,7 @@
         <form id="login-form">
             <div><span>Enter Room: </span><input type="text" name="roomName" id="room"></input></div>
             <div><span>Enter Name: </span><input type="text" name="userName" id="user"></input></div>
-            <input type="submit" value="Submit">
+            <button id="sbtn">Submit</button>
         </form>
     </div>
 
@@ -44,12 +44,14 @@
     <script type="text/javascript">
     
         // ask user for name with popup prompt    
-        var room = "";
-        var name = "";
+        var room = $("#room").val();
+        var name = $("#user").val();
 
-        $( "#login-form" ).submit(function( event ) {
+        $( "#sbtn" ).click(function() {
             room = $("#room").val();
             name = $("#user").val();
+
+            alert(room + " " + name);
             
             // default name is 'Guest'
             if (!name || name === ' ') {
@@ -59,10 +61,11 @@
             // strip tags
             name = name.replace(/(<([^>]+)>)/ig,"");
             room = room.replace(/(<([^>]+)>)/ig,"");
-            
-            // display name on page
-            $("#name-area").html("You are: <span>" + name + "</span> in room: <span>" + room + "</span>");
         });
+
+            
+        // display name on page
+        $("#name-area").html("You are: <span>" + name + "</span> in room: <span>" + room + "</span>");
         
         // kick off chat
         var chat =  new Chat();
