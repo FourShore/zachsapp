@@ -8,8 +8,6 @@ var instanse = false;
 var state;
 var mes;
 var file;
-var roomname;
-var username;
 
 function Chat () {
     this.update = updateChat;
@@ -116,8 +114,8 @@ function sendChat(message, nickname, roomname)
         var chat =  new Chat();
 
         $( "#sbtn" ).click(function() {
-            username = $("#user").val();
-            roomname = $("#room").val();
+            var username = $("#user").val();
+            var roomname = $("#room").val();
             
             // default name is 'Guest'
             if (!username || username === ' ') {
@@ -130,8 +128,8 @@ function sendChat(message, nickname, roomname)
             }
             
             // strip tags
-            username = username.replace(/(<([^>]+)>)/ig,"");
-            roomname = roomname.replace(/(<([^>]+)>)/ig,"");
+            chat.username = username.replace(/(<([^>]+)>)/ig,"");
+            chat.roomname = roomname.replace(/(<([^>]+)>)/ig,"");
         });
 
 
@@ -168,7 +166,7 @@ function sendChat(message, nickname, roomname)
                     // send 
                     if (length <= maxLength + 1) { 
                      
-                        chat.send(text, username, roomname);  
+                        chat.send(text, chat.username, chat.roomname);  
                         $(this).val("");
                         
                     } else {
