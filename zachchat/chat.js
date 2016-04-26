@@ -112,10 +112,12 @@ function sendChat(message, nickname, roomname)
         
         // kick off chat
         var chat =  new Chat();
+        var username = "";
+        var roomname = "";
 
         $( "#sbtn" ).click(function() {
-            var username = $("#user").val();
-            var roomname = $("#room").val();
+            username = $("#user").val();
+            roomname = $("#room").val();
             
             // default name is 'Guest'
             if (!username || username === ' ') {
@@ -128,8 +130,8 @@ function sendChat(message, nickname, roomname)
             }
             
             // strip tags
-            chat.username = username.replace(/(<([^>]+)>)/ig,"");
-            chat.roomname = roomname.replace(/(<([^>]+)>)/ig,"");
+            username = username.replace(/(<([^>]+)>)/ig,"");
+            roomname = roomname.replace(/(<([^>]+)>)/ig,"");
         });
 
 
@@ -166,7 +168,7 @@ function sendChat(message, nickname, roomname)
                     // send 
                     if (length <= maxLength + 1) { 
                      
-                        chat.send(text, chat.username, chat.roomname);  
+                        chat.send(text, username, roomname);  
                         $(this).val("");
                         
                     } else {
