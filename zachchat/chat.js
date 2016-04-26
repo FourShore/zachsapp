@@ -85,7 +85,7 @@ function updateChat(){
 }
 
 //send the message
-function sendChat(message, nickname, roomname)
+function sendChat(message)
 {       
     updateChat();
      $.ajax({
@@ -94,8 +94,6 @@ function sendChat(message, nickname, roomname)
 		   data: {  
 		   			'function': 'send',
 					'message': message,
-					'nickname': nickname,
-					'roomname': roomname,
 					'file': file
 				 },
 		   dataType: "json",
