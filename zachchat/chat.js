@@ -8,6 +8,8 @@ var instanse = false;
 var state;
 var mes;
 var file;
+var roomname;
+var username;
 
 function Chat () {
     this.update = updateChat;
@@ -85,7 +87,7 @@ function updateChat(){
 }
 
 //send the message
-function sendChat(message)
+function sendChat(message, nickname, roomname)
 {       
     updateChat();
      $.ajax({
@@ -94,6 +96,8 @@ function sendChat(message)
 		   data: {  
 		   			'function': 'send',
 					'message': message,
+					'nickname': nickname,
+					'roomname': roomname,
 					'file': file
 				 },
 		   dataType: "json",
@@ -112,24 +116,22 @@ function sendChat(message)
         var chat =  new Chat();
 
         $( "#sbtn" ).click(function() {
-            var name = $("#user").val();
-            var room = $("#room").val();
+            username = $("#user").val();
+            roomname = $("#room").val();
             
             // default name is 'Guest'
-            if (!name || name === ' ') {
-               name = "Guest";  
+            if (!username || username === ' ') {
+               username = "Guest";  
             }
 
             // default room is 'Guest'
-            if (!room || room === ' ') {
-               room = "Default";
+            if (!roomname || roomname === ' ') {
+               roomname = "Default";
             }
             
             // strip tags
-            name = name.replace(/(<([^>]+)>)/ig,"");
-            room = room.replace(/(<([^>]+)>)/ig,"");
-
-            chat.login(room, name);
+            username = username.replace(/(<([^>]+)>)/ig,"");
+            roomname = roomname.replace(/(<([^>]+)>)/ig,"");
         });
 
 
@@ -166,7 +168,7 @@ function sendChat(message)
                     // send 
                     if (length <= maxLength + 1) { 
                      
-                        chat.send(text);  
+                        chat.send(text, username, roomname);  
                         $(this).val("");
                         
                     } else {

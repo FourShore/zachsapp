@@ -3,16 +3,8 @@
     $function = $_POST['function'];
     
     $log = array();
-    $room = "DefaultRoom";
-    $user = "Guest";
     
     switch($function) {
-        
-        case ('login'):
-            $room = $_POST['roomname'];
-            $user = $_POST['username'];
-            fwrite(fopen('chat.txt', 'a'), "Welcome ".$user." to room ".$room." \n"); 
-            break;
 
     	case('getState'):
         	if(file_exists('chat.txt')){
@@ -48,8 +40,8 @@
              break;
     	 
     	 case('send'):
-		    //$nickname = htmlentities(strip_tags($_POST['nickname']));
-            //$roomname = htmlentities(strip_tags($_POST['roomname']));
+		    $nickname = htmlentities(strip_tags($_POST['nickname']));
+            $roomname = htmlentities(strip_tags($_POST['roomname']));
 			$reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
 			$message = htmlentities(strip_tags($_POST['message']));
     		if(($message) != "\n"){
@@ -59,7 +51,7 @@
     			} 
     			 
             	
-            	fwrite(fopen('chat.txt', 'a'), "<span>". $user ." " . $room . "</span>" . $message = str_replace("\n", " ", $message) . "\n"); 
+            	fwrite(fopen('chat.txt', 'a'), "<span>". $nickname ." " . $roomname . "</span>" . $message = str_replace("\n", " ", $message) . "\n");
     		}
         	break;
     	
