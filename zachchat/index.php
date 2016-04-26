@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="style.css" type="text/css" />
     
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script type="text/javascript" src="chat.js"></script>
 
 
 </head>
@@ -41,80 +40,9 @@
 
 </body>
 
+    <script type="text/javascript" src="chat.js"></script>
     <script type="text/javascript">
-    
-        // ask user for name with popup prompt    
-        var room = $("#room").val();
-        var name = $("#user").val();
 
-        $( "#sbtn" ).click(function() {
-            room = $("#room").val();
-            name = $("#user").val();
 
-            alert(room + " " + name);
-            
-            // default name is 'Guest'
-            if (!name || name === ' ') {
-               name = "Guest";  
-            }
-            
-            // strip tags
-            name = name.replace(/(<([^>]+)>)/ig,"");
-            room = room.replace(/(<([^>]+)>)/ig,"");
-        });
-
-            
-        // display name on page
-        $("#name-area").html("You are: <span>" + name + "</span> in room: <span>" + room + "</span>");
-        
-        // kick off chat
-        var chat =  new Chat();
-        $(function() {
-        
-             chat.getState(); 
-             
-             // watch textarea for key presses
-             $("#sendie").keydown(function(event) {  
-             
-                 var key = event.which;  
-           
-                 //all keys including return.  
-                 if (key >= 33) {
-                   
-                     var maxLength = $(this).attr("maxlength");  
-                     var length = this.value.length;  
-                     
-                     // don't allow new content if length is maxed out
-                     if (length >= maxLength) {  
-                         event.preventDefault();  
-                     }  
-                  }  
-                                                                                                                                                                                                            });
-             // watch textarea for release of key press
-             $('#sendie').keyup(function(e) {   
-                                 
-                  if (e.keyCode == 13) { 
-                  
-                    var text = $(this).val();
-                    var maxLength = $(this).attr("maxlength");  
-                    var length = text.length; 
-                     
-                    // send 
-                    if (length <= maxLength + 1) { 
-                     
-                        chat.send(text, name);  
-                        $(this).val("");
-                        
-                    } else {
-                    
-                        $(this).val(text.substring(0, maxLength));
-                        
-                    }   
-                    
-                    
-                  }
-             });
-            
-        });
     </script>
 </html>

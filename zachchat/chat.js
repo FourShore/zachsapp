@@ -13,6 +13,24 @@ function Chat () {
     this.update = updateChat;
     this.send = sendChat;
 	this.getState = getStateOfChat;
+	this.login = setLogin;
+}
+
+function setLogin(nickname, roomname) {
+    updateChat();
+     $.ajax({
+		   type: "POST",
+		   url: "process.php",
+		   data: {  
+		   			'function': 'login',
+					'username': nickname,
+					'roomname': roomname,
+				 },
+		   dataType: "json",
+		   success: function(data){
+			   updateChat();
+		   },
+		});
 }
 
 //gets the state of the chat
@@ -67,7 +85,7 @@ function updateChat(){
 }
 
 //send the message
-function sendChat(message, nickname)
+function sendChat(message, nickname, roomname)
 {       
     updateChat();
      $.ajax({
@@ -77,6 +95,7 @@ function sendChat(message, nickname)
 		   			'function': 'send',
 					'message': message,
 					'nickname': nickname,
+					'roomname': roomname,
 					'file': file
 				 },
 		   dataType: "json",
@@ -85,3 +104,81 @@ function sendChat(message, nickname)
 		   },
 		});
 }
+
+
+
+        // display name on page
+        //$("#name-area").html("You are: <span>" + name + "</span> in room: <span>" + room + "</span>");
+        
+        // kick off chat
+        var chat =  new Chat();
+
+        $( "#sbtn" ).click(function() {
+            var name = $("#user").val();
+            var room = $("#room").val();
+            
+            // default name is 'Guest'
+            if (!name || name === ' ') {
+               name = "Guest";  
+            }
+
+            // default room is 'Guest'
+            if (!room || room === ' ') {
+               room = "Default";
+            }
+            
+            // strip tags
+            name = name.replace(/(<([^>]+)>)/ig,"");
+            room = room.replace(/(<([^>]+)>)/ig,"");
+
+            chat.login(room, name);
+        });
+
+
+        $(function() {
+        
+             chat.getState(); 
+             
+             // watch textarea for key presses
+             $("#sendie").keydown(function(event) {  
+             
+                 var key = event.which;  
+           
+                 //all keys including return.  
+                 if (key >= 33) {
+                   
+                     var maxLength = $(this).attr("maxlength");  
+                     var length = this.value.length;  
+                     
+                     // don't allow new content if length is maxed out
+                     if (length >= maxLength) {  
+                         event.preventDefault();  
+                     }  
+                  }  
+                                                                                                                                                                                                            });
+             // watch textarea for release of key press
+             $('#sendie').keyup(function(e) {   
+                                 
+                  if (e.keyCode == 13) { 
+                  
+                    var text = $(this).val();
+                    var maxLength = $(this).attr("maxlength");  
+                    var length = text.length; 
+                     
+                    // send 
+                    if (length <= maxLength + 1) { 
+                     
+                        chat.send(text);  
+                        $(this).val("");
+                        
+                    } else {
+                    
+                        $(this).val(text.substring(0, maxLength));
+                        
+                    }   
+                    
+                    
+                  }
+             });
+            
+        });
