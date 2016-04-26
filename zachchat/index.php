@@ -26,7 +26,7 @@
 
     <div id="page-wrap">
     
-        <h2>jQuery/PHP Chat</h2>
+        <h2>This is Zach Chat</h2>
         
         <p id="name-area"></p>
         
