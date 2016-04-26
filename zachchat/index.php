@@ -16,6 +16,13 @@
 </head>
 
 <body onload="setInterval('chat.update()', 1000)">
+    <div id="login" class="login">
+        <form id="login-form">
+            <div><span>Enter Room: </span><input type="text" name="roomName" id="room"></input></div>
+            <div><span>Enter Name: </span><input type="text" name="userName" id="user"></input></div>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 
     <div id="page-wrap">
     
@@ -37,18 +44,25 @@
     <script type="text/javascript">
     
         // ask user for name with popup prompt    
-        var name = prompt("Enter your chat name:", "Guest");
-        
-        // default name is 'Guest'
-        if (!name || name === ' ') {
-           name = "Guest";  
-        }
-        
-        // strip tags
-        name = name.replace(/(<([^>]+)>)/ig,"");
-        
-        // display name on page
-        $("#name-area").html("You are: <span>" + name + "</span>");
+        var room = "";
+        var name = "";
+
+        $( "#login-form" ).submit(function( event ) {
+            room = $("#room").val();
+            name = $("#user").val();
+            
+            // default name is 'Guest'
+            if (!name || name === ' ') {
+               name = "Guest";  
+            }
+            
+            // strip tags
+            name = name.replace(/(<([^>]+)>)/ig,"");
+            room = room.replace(/(<([^>]+)>)/ig,"");
+            
+            // display name on page
+            $("#name-area").html("You are: <span>" + name + "</span> in room: <span>" + room + "</span>");
+        });
         
         // kick off chat
         var chat =  new Chat();
