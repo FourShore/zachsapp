@@ -4,9 +4,9 @@ h2                              { color: #fa9f00; font: 30px Helvetica, Sans-Ser
 #page-wrap                      { width: 500px; margin: 30px auto; position: relative; }
 
 #chat-wrap                      { border: none; margin: 0 0 15px 0; }
-#chat-area                      { height: 300px; overflow: auto; padding: 20px; background: #122639; }
-#chat-area span                 { color: white; background: #1b2f43; padding: 4px 8px; -moz-border-radius: 5px; -webkit-border-radius: 8px; margin: 0 5px 0 0; }
-#chat-area p                    { padding: 8px 0; border-bottom: 1px solid #ccc; }
+#chat-area                      { height: 450px; overflow: auto; padding: 20px; background: #122639; }
+#chat-area span                 { color: #122639; background: #D2DD2C; padding: 4px 8px; -moz-border-radius: 5px; -webkit-border-radius: 8px; margin: 0 5px 0 0; }
+#chat-area p                    { padding: 8px 0; color: #fff }
 
 #send-message-area p            { float: left; color: white; padding-top: 27px; font-size: 14px; }
 #sendie                         { background: #122639; color: #fff; width: 100%; padding: 10px 0; text-align: center; border: none; }
@@ -34,7 +34,7 @@ h2                              { color: #fa9f00; font: 30px Helvetica, Sans-Ser
 }
 
 .login #sbtn {
-	background: #BEBEBE;
+	background: #D2DD2C;
 	color: #122639;
     border: none;
     padding: 10px;
@@ -43,7 +43,7 @@ h2                              { color: #fa9f00; font: 30px Helvetica, Sans-Ser
 }
 
 .login #sbtn:hover {
-	background: #8B8888;
+	background: #9FA63C;
 	color: #122639;
 }
 
