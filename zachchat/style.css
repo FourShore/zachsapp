@@ -1,6 +1,7 @@
 *                               { margin: 0; padding: 0; }
 body                            { font: 12px "Lucida Grande", Sans-Serif; background: #1b2f43; columns: #fff;}
 h2                              { color: #fa9f00; font: 30px Helvetica, Sans-Serif; margin: 0 0 10px 0; }
+strong							{ color: #D2DD2C;}
 #page-wrap                      { max-width: 750px; margin: 30px auto; position: relative; }
 
 #chat-wrap                      { border: none; margin: 0 0 15px 0; }

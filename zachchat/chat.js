@@ -12,6 +12,7 @@ var file;
 function Chat () {
     this.update = updateChat;
     this.send = sendChat;
+    this.sendIntro = sendIntro;
 	this.getState = getStateOfChat;
 	this.login = setLogin;
 }
@@ -94,6 +95,27 @@ function sendChat(message, nickname, roomname)
 		   url: "process.php",
 		   data: {  
 		   			'function': 'send',
+					'message': message,
+					'nickname': nickname,
+					'roomname': roomname,
+					'file': file
+				 },
+		   dataType: "json",
+		   success: function(data){
+			   updateChat();
+		   },
+		});
+}
+
+//send the message
+function sendIntro(message, nickname, roomname)
+{       
+    updateChat();
+     $.ajax({
+		   type: "POST",
+		   url: "process.php",
+		   data: {  
+		   			'function': 'intro',
 					'message': message,
 					'nickname': nickname,
 					'roomname': roomname,
