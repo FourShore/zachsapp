@@ -20,7 +20,7 @@
             <form id="login-form">
                 <div><input type="text" name="roomName" id="room" placeholder="Room"></input></div>
                 <div><input type="text" name="userName" id="user" placeholder="Alias"></input></div>
-                <button id="sbtn">GO</button>
+                <button id="sbtn">Join</button>
             </form>
         </div>
     </div>
