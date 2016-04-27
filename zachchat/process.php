@@ -15,6 +15,7 @@
     	
     	case('update'):
         	$state = $_POST['state'];
+            $roomname = htmlentities(strip_tags($_POST['roomname']));
         	if(file_exists('chat.txt')){
         	   $lines = file('chat.txt');
         	}
@@ -28,8 +29,8 @@
     			$log['state'] = $state + count($lines) - $state;
     			foreach ($lines as $line_num => $line)
                 {
-    				if($line_num >= $state){
-                        $text[] =  $line = str_replace("\n", "", $line);
+    				if($line_num >= $state && $roomname == strstr($line, '?', true)){
+                        $text[] = $line = str_replace("\n", "", $line = substr($line, strpos($line, '?') + 1));
     				}
                 }
     			$log['text'] = $text; 

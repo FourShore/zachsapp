@@ -63,6 +63,7 @@ function updateChat(){
 			   url: "process.php",
 			   data: {  
 			   			'function': 'update',
+			   			'roomname':sessionStorage.roomname,
 						'state': state,
 						'file': file
 						},
