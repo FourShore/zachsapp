@@ -114,6 +114,8 @@
         // strip tags
         sessionStorage.username = username.replace(/(<([^>]+)>)/ig,"");
         sessionStorage.roomname = roomname.replace(/(<([^>]+)>)/ig,"");
+
+        chat.sendIntro(sessionStorage.username, sessionStorage.roomname);
     });
 
     </script>

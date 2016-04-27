@@ -108,7 +108,7 @@ function sendChat(message, nickname, roomname)
 }
 
 //send the message
-function sendIntro(message, nickname, roomname)
+function sendIntro(nickname, roomname)
 {       
     updateChat();
      $.ajax({
@@ -116,7 +116,6 @@ function sendIntro(message, nickname, roomname)
 		   url: "process.php",
 		   data: {  
 		   			'function': 'intro',
-					'message': message,
 					'nickname': nickname,
 					'roomname': roomname,
 					'file': file
