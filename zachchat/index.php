@@ -39,20 +39,19 @@
 
     <script type="text/javascript" src="chat.js"></script>
     <script type="text/javascript">
-    // display name on page
-    //$("#name-area").html("You are: <span>" + name + "</span> in room: <span>" + room + "</span>");
 
-    // kick off chat
+    // start
     var chat =  new Chat();
 
     $(function() {
 
         if(sessionStorage.username && sessionStorage.roomname){
             $("#login-panel").hide(450);
-            chat.sendIntro(sessionStorage.username, sessionStorage.roomname);
         }
 
         chat.getState();
+
+        chat.sendIntro(sessionStorage.username, sessionStorage.roomname);
          
          // watch textarea for key presses
          $("#sendie").keydown(function(event) {  
