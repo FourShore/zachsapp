@@ -2,15 +2,55 @@
 body                            { font: 12px "Lucida Grande", Sans-Serif; background: #1b2f43; columns: #fff;}
 h2                              { color: #fa9f00; font: 30px Helvetica, Sans-Serif; margin: 0 0 10px 0; }
 strong							{ color: #D2DD2C;}
-#page-wrap                      { max-width: 750px; margin: 30px auto; position: relative; }
 
-#chat-wrap                      { border: none; margin: 0 0 15px 0; }
-#chat-area                      { height: 60vh; max-height: 750px; overflow: auto; padding: 20px; background: #122639; }
-#chat-area span                 { color: #122639; background: #D2DD2C; padding: 4px 8px; -moz-border-radius: 5px; -webkit-border-radius: 8px; margin: 0 5px 0 0; }
-#chat-area p                    { padding: 8px 0; color: #fff }
+#page-wrap { 
+	max-width: 750px;
+	margin: 30px auto;
+	position: relative; 
+}
 
-#send-message-area p            { float: left; color: white; padding-top: 27px; font-size: 14px; }
-#sendie                         { background: #122639; color: #fff; width: 100%; padding: 10px 0; text-align: center; border: none; }
+#chat-wrap {
+	border: none;
+	margin: 0 0 15px 0;
+}
+
+#chat-area {
+	height: 60vh;
+	max-height: 750px;
+	overflow: auto;
+	padding: 20px;
+	background: #122639;
+}
+
+#chat-area span {
+	color: #122639;
+	background: #D2DD2C;
+	padding: 4px 8px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 8px;
+	margin: 0 5px 0 0; 
+}
+
+#chat-area p {
+	padding: 8px 0;
+	color: #fff;
+}
+
+#send-message-area p {
+	float: left;
+	color: white;
+	padding-top: 27px;
+	font-size: 14px;
+}
+
+#sendie {
+	background: #122639;
+	color: #fff;
+	width: 100%;
+	padding: 10px 0;
+	text-align: center;
+	border: none;
+}
 
 .login {
 	position: fixed; /* Stay in place */
