@@ -86,6 +86,7 @@ strong							{ color: #D2DD2C;}
 .login #sbtn:hover {
 	background: #9FA63C;
 	color: #122639;
+	cursor: pointer;
 }
 
 .login-content {
