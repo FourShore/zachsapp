@@ -122,7 +122,7 @@ function sendIntro(nickname, roomname)
 				 },
 		   dataType: "json",
 		   success: function(data){
-			   //updateChat();
+			   updateChat();
 		   },
 		});
 }

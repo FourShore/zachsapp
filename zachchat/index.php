@@ -49,9 +49,10 @@
 
         if(sessionStorage.username && sessionStorage.roomname){
             $("#login-panel").hide(450);
+            chat.sendIntro(sessionStorage.username, sessionStorage.roomname);
         }
 
-         chat.getState(); 
+        chat.getState();
          
          // watch textarea for key presses
          $("#sendie").keydown(function(event) {  
@@ -114,8 +115,6 @@
         // strip tags
         sessionStorage.username = username.replace(/(<([^>]+)>)/ig,"");
         sessionStorage.roomname = roomname.replace(/(<([^>]+)>)/ig,"");
-
-        chat.sendIntro(sessionStorage.username, sessionStorage.roomname);
     });
 
     </script>
