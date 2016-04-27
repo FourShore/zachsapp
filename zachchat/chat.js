@@ -81,8 +81,7 @@ function updateChat(){
 }
 
 //send the message
-function sendChat(message, nickname, roomname)
-{       
+function sendChat(message, nickname, roomname){
     updateChat();
      $.ajax({
 		   type: "POST",
@@ -102,8 +101,7 @@ function sendChat(message, nickname, roomname)
 }
 
 //send the message
-function sendIntro(nickname, roomname)
-{       
+function sendIntro(nickname, roomname){
     updateChat();
      $.ajax({
 		   type: "POST",

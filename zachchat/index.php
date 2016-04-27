@@ -53,7 +53,7 @@
         chat.sendIntro(sessionStorage.username, sessionStorage.roomname);
          
          // watch textarea for key presses
-         $("#sendie").keydown(function(event) {  
+        $("#sendie").keydown(function(event) {  
          
             var key = event.which;  
        
@@ -67,9 +67,10 @@
                 if (length >= maxLength) {  
                     event.preventDefault();  
                 }  
-            }  
-                                                                                                                                                                                                        });
-         // watch textarea for release of key press
+            }
+        });
+
+        // watch textarea for release of key press
          $('#sendie').keyup(function(e) {   
                              
             if (e.keyCode == 13) { 
