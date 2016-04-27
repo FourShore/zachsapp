@@ -5,7 +5,7 @@
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Chat</title>
+    <title>Zach Chat</title>
     
     <link rel="stylesheet" href="style.css" type="text/css" />
     
@@ -15,25 +15,22 @@
 </head>
 
 <body onload="setInterval('chat.update()', 1000)">
-    <div id="login" class="login">
-        <form id="login-form">
-            <div><span>Enter Room: </span><input type="text" name="roomName" id="room"></input></div>
-            <div><span>Enter Name: </span><input type="text" name="userName" id="user"></input></div>
-            <button id="sbtn">Submit</button>
-        </form>
+    <div id="login-panel" class="login">
+        <div class="login-content">
+            <form id="login-form">
+                <div><input type="text" name="roomName" id="room" placeholder="Room"></input></div>
+                <div><input type="text" name="userName" id="user" placeholder="User Name"></input></div>
+                <button id="sbtn">GO</button>
+            </form>
+        </div>
     </div>
 
     <div id="page-wrap">
-    
-        <h2>This is Zach Chat</h2>
-        
-        <p id="name-area"></p>
         
         <div id="chat-wrap"><div id="chat-area"></div></div>
         
         <form id="send-message-area">
-            <p>Your message: </p>
-            <textarea id="sendie" maxlength = '100' ></textarea>
+            <textarea id="sendie" maxlength = '100' placeholder="Type Here..."></textarea>
         </form>
     
     </div>
@@ -48,27 +45,11 @@
     // kick off chat
     var chat =  new Chat();
 
-    $( "#sbtn" ).click(function() {
-        var username = $("#user").val();
-        var roomname = $("#room").val();
-        
-        // default name is 'Guest'
-        if (!username || username === ' ') {
-           username = "Guest";  
-        }
-
-        // default room is 'Guest'
-        if (!roomname || roomname === ' ') {
-           roomname = "Default";
-        }
-        
-        // strip tags
-        sessionStorage.username = username.replace(/(<([^>]+)>)/ig,"");
-        sessionStorage.roomname = roomname.replace(/(<([^>]+)>)/ig,"");
-    });
-
-
     $(function() {
+
+        if(sessionStorage.username && sessionStorage.roomname){
+            $("#login-panel").hide(450);
+        }
 
          chat.getState(); 
          
@@ -114,6 +95,25 @@
               }
          });
         
+    });
+
+    $( "#sbtn" ).click(function() {
+        var username = $("#user").val();
+        var roomname = $("#room").val();
+        
+        // default name is 'Guest'
+        if (!username || username === '') {
+           username = "Guest";  
+        }
+
+        // default room is 'Default'
+        if (!roomname || roomname === '') {
+           roomname = "Default";
+        }
+        
+        // strip tags
+        sessionStorage.username = username.replace(/(<([^>]+)>)/ig,"");
+        sessionStorage.roomname = roomname.replace(/(<([^>]+)>)/ig,"");
     });
 
     </script>
