@@ -19,7 +19,7 @@
         <div class="login-content">
             <form id="login-form">
                 <div><input type="text" name="roomName" id="room" placeholder="Room"></input></div>
-                <div><input type="text" name="userName" id="user" placeholder="User Name"></input></div>
+                <div><input type="text" name="userName" id="user" placeholder="Alias"></input></div>
                 <button id="sbtn">GO</button>
             </form>
         </div>
@@ -30,7 +30,7 @@
         <div id="chat-wrap"><div id="chat-area"></div></div>
         
         <form id="send-message-area">
-            <textarea id="sendie" maxlength = '100' placeholder="Type Here..."></textarea>
+            <textarea id="sendie" maxlength = '114' placeholder="Type Here... Press Enter"></textarea>
         </form>
     
     </div>
